@@ -1,0 +1,30 @@
+block vars
+  - var currentPage='index-page'
+
+doctype html
+include ../partials/digistamp.pug
+html(lang=config.layout.language, dir=config.layout.direction, class=config.layout.default_class)
+  include ../partials/head.pug
+  body(data-svg-url='/images/svg-sprite.svg', data-page=currentPage)
+    include ../modules/header.pug
+    main(class="page", role="main")
+      block content
+    include ../modules/footer.pug
+  script(type='text/javascript', src='/js/app.bundle.js' async defer)
+  script.
+    WebFontConfig = {
+      google: { families: ['Montserrat:300,400,500,600,700'] },
+      custom: {
+        families: ['UniversNextRegular', 'UniversNextThin'],
+        urls: ['/css/font.css']
+      },
+      timeout: 1500,
+    };
+    (function () {
+      const wf = document.createElement('script');
+      const s = document.getElementsByTagName('script')[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      s.parentNode.insertBefore(wf, s);
+    })();

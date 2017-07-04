@@ -1,0 +1,168 @@
+{
+  "name": "uid-skeleton",
+  "version": "4.0.0",
+  "description": "UID Skeleton v4 - Gulp/Webpack/PostCSS/Pug",
+  "repository": "git@gitlab.possible.hu:frontend/skeleton.git",
+  "author": "Peter Schmiz <peter.schmiz@possible.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "axios": "0.15.x",
+    "babel-core": "6.x",
+    "babel-eslint": "7.x",
+    "babel-loader": "6.x",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "browser-sync": "2.x",
+    "critical": "0.8.x",
+    "css-mqpacker": "5.x",
+    "cssnano": "3.x",
+    "eslint": "3.x",
+    "eslint-config-airbnb-base": "11.x",
+    "eslint-loader": "1.x",
+    "eslint-plugin-import": "2.x",
+    "expose-loader": "0.x",
+    "express": "4.x",
+    "gulp": "3.x",
+    "gulp-cached": "1.x",
+    "gulp-cheerio": "0.6.x",
+    "gulp-cli": "1.x",
+    "gulp-data": "^1.2.1",
+    "gulp-filter": "5.x",
+    "gulp-if": "2.x",
+    "gulp-imagemin": "3.x",
+    "gulp-inject": "4.x",
+    "gulp-newer": "1.3.x",
+    "gulp-nodemon": "2.x",
+    "gulp-plumber": "1.x",
+    "gulp-postcss": "6.x",
+    "gulp-pug": "3.x",
+    "gulp-rename": "1.x",
+    "gulp-replace": "0.5.x",
+    "gulp-sourcemaps": "2.x",
+    "gulp-svgstore": "6.x",
+    "gulp-util": "3.x",
+    "json-loader": "0.5.x",
+    "lodash": "4.x",
+    "lost": "8.x",
+    "minimist": "1.x",
+    "postcss-at-rules-variables": "0.0.x",
+    "postcss-bem": "https://github.com/possiblecee/postcss-bem.git",
+    "postcss-cssnext": "2.x",
+    "postcss-custom-properties": "https://github.com/possiblecee/postcss-custom-properties.git",
+    "postcss-each": "0.9.x",
+    "postcss-extend": "1.x",
+    "postcss-import": "9.x",
+    "postcss-reporter": "3.x",
+    "postcss-responsive-type": "0.5.x",
+    "postcss-utilities": "0.x",
+    "postcss-will-change": "1.x",
+    "precss": "1.x",
+    "pug": "2.0.0-beta11",
+    "stylelint": "7.x",
+    "stylelint-order": "^0.2.2",
+    "stylelint-selector-bem-pattern": "1.x",
+    "webpack": "2.x",
+    "webpack-stream": "3.x",
+    "whatwg-fetch": "^2.0.2"
+  },
+  "scripts": {
+    "deploy": "yarn run build-css-release && yarn run build-fonts && yarn run build-js-release && yarn run optimize-images-release && yarn run build-svg && yarn run build-html && yarn run deploy-files",
+    "build": "yarn run build-css-release && yarn run build-fonts && yarn run build-js-release && yarn run optimize-images-release && yarn run build-svg && yarn run build-html",
+    "build-with-inject": "yarn run build-css-release && yarn run build-js-release && yarn run optimize-images-release && yarn run build-svg && yarn run build-html && yarn run critical-css && yarn run inject-css",
+    "build-css": "gulp postcss --lint true --production false",
+    "build-css-nolint": "gulp postcss --lint false --production false",
+    "build-css-release": "gulp postcss --lint true --production true",
+    "build-js": "gulp webpack --lint true --production false",
+    "build-js-nolint": "gulp webpack --lint false --production false",
+    "build-js-release": "gulp webpack --lint true --production true",
+    "build-svg": "gulp svg",
+    "build-fonts": "gulp fonts",
+    "build-html": "gulp pug",
+    "deploy-files": "gulp deploy",
+    "critical-css": "gulp critical",
+    "inject-css": "gulp inject",
+    "ci-deploy": "gulp pug && gulp ci-deploy-assets && gulp ci-deploy-replace-path",
+    "optimize-images": "gulp imagemin --production false",
+    "optimize-images-release": "gulp imagemin --production true",
+    "start": "yarn run build-css && yarn run build-js && gulp start",
+    "watch": "gulp watch",
+    "lint": "eslint src/js/**/*.js && stylelint src/css/**/*.pcss"
+  },
+  "siteConfig": {
+    "directories": {
+      "src": "./src",
+      "dist": "./dist",
+      "ci": "./ci",
+      "ciPath": "/uid-skeleton",
+      "deploy": "../deploy",
+      "views": {
+        "localData": "./src/views/data/data.json"
+      }
+    },
+    "api": {
+      "baseUrl": ""
+    },
+    "assets": {
+      "mainStyle": "/css/app.css",
+      "mainBundle": "/js/app.bundle.js"
+    },
+    "layout": {
+      "language": "en",
+      "direction": "ltr",
+      "default_class": ""
+    },
+    "head": {
+      "charset": "utf-8",
+      "title": "☢ PLEASE CHANGE ☢ - Skeleton default title",
+      "viewport": "width=device-width, initial-scale=1",
+      "keywords": "keywords",
+      "description": "description",
+      "favicon_ico": "/images/icons/favicon.ico",
+      "favicon_png_16x16": "/images/icons/favicon-16x16.png",
+      "favicon_png_32x32": "/images/icons/favicon-32x32.png",
+      "favicon_png_96x96": "/images/icons/favicon-96x96.png",
+      "favicon_android": "/images/icons/android-chrome-192x192.png",
+      "opengraph": {
+        "enabled": 1,
+        "tags": {
+          "og:title": "☢ PLEASE CHANGE ☢ - OG TITLE",
+          "og:type": "website",
+          "og:url": "☢ PLEASE CHANGE ☢ - OG URL",
+          "og:image": "☢ PLEASE CHANGE ☢ - OG IMAGE",
+          "og:site_name": "☢ PLEASE CHANGE ☢ - OG SITE NAME",
+          "og:description": "☢ PLEASE CHANGE ☢ - OG DESCRIPTION",
+          "og:fb:app_id": "☢ PLEASE CHANGE ☢ - FB APP ID"
+        }
+      },
+      "twitter": {
+        "enabled": 1,
+        "tags": {
+          "twitter:card": "summary",
+          "twitter:site": "☢ PLEASE CHANGE ☢ - @site_username",
+          "twitter:title": "☢ PLEASE CHANGE ☢ - PAGE TITLE",
+          "twitter:description": "☢ PLEASE CHANGE ☢ - DESCRIPTION",
+          "twitter:creator": "@PossibleCEE",
+          "twitter:image:src": "☢ PLEASE CHANGE ☢ - IMAGE",
+          "twitter:domain": "☢ PLEASE CHANGE ☢ - DOMAIN"
+        }
+      },
+      "ios": {
+        "enabled": 1,
+        "default": "/images/icons/apple-touch-icon-57x57.png",
+        "icons": {
+          "57x57": "/images/icons/apple-touch-icon-57x57.png",
+          "60x60": "/images/icons/apple-touch-icon-60x60.png",
+          "72x72": "/images/icons/apple-touch-icon-72x72.png",
+          "76x76": "/images/icons/apple-touch-icon-76x76.png",
+          "114x114": "/images/icons/apple-touch-icon-114x114.png",
+          "120x120": "/images/icons/apple-touch-icon-120x120.png",
+          "144x144": "/images/icons/apple-touch-icon-144x144.png",
+          "152x152": "/images/icons/apple-touch-icon-152x152.png",
+          "180x180": "/images/icons/apple-touch-icon-180x180.png"
+        }
+      }
+    }
+  }
+}

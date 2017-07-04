@@ -1,0 +1,6 @@
+mixin icon(src, title, viewBox)
+  span.icon(class="icon-" + src, role="presentation", aria-hidden="true")
+    span.icon__wrapper
+      svg(viewBox=viewBox ? viewBox : "0 0 256 256", role="img", aria-label=title ? title : "Icon")
+        title=title ? title : "Icon"
+        use(xlink:href="#icon-" + src)

@@ -1,0 +1,62 @@
+image: pety7439/uid-container
+
+variables:
+  LOCAL_PATH: ./ci
+  LOCAL_PATH_DEV: ./dist
+
+before_script:
+  - cd uid-skeleton
+
+cache:
+    key: "$CI_PROJECT_ID"
+    untracked: true
+
+stages:
+- init
+- lint
+- build
+- deploy
+
+uid:init:
+  stage: init
+  tags:
+  - uid-container
+  script:
+  - yarn
+
+uid:lint:
+  stage: lint
+  tags:
+  - uid-container
+  script:
+  - yarn lint
+
+uid:build-css:
+  stage: build
+  only:
+   - master
+  tags:
+  - uid-container
+  script:
+  - yarn run build-css-release
+
+uid:build-js:
+  stage: build
+  only:
+   - master
+  tags:
+  - uid-container
+  script:
+  - yarn run build-js-release
+
+uid:deploy:
+  stage: deploy
+  when: manual
+  environment:
+    name: QA
+  only:
+  - master
+  script:
+  - yarn run ci-deploy
+  - sh ./deploy.sh $PROD_URL $LOCAL_PATH $PROD_PATH
+  - sh ./deploy.sh $PROD_URL $LOCAL_PATH_DEV $PROD_PATH_DEV

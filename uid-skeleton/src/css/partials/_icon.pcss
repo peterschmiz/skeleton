@@ -1,0 +1,27 @@
+.icon {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  @util size(64px, 64px);
+
+  &:hover {
+    color: inherit;
+  }
+
+  &__wrapper {
+    transform: translateY(-50%);
+    @util position(absolute, 50% null null 0);
+    @util size(100%, 100%);
+  }
+
+  svg {
+    fill: currentColor;
+    @util position(absolute, 0 null null 0);
+    @util size(100%, 100%);
+  }
+
+  use {
+    pointer-events: none;
+  }
+
+}

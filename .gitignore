@@ -1,0 +1,27 @@
+# WebStorm settings
+.idea/
+
+# SublimeText
+*.sublime-workspace
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Node.js modules
+node_modules/
+
+# Visual Code
+.vscode
+
+# CI related UID files
+uid-skeleton/ci

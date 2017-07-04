@@ -1,0 +1,55 @@
+extends layouts/layout.pug
+include partials/icon.pug
+
+block content
+  .pillarbox.block--vpadding
+    h2.block--vpadding-double.block--margin-bottom Grid
+
+    .grid.text--center.text--color-white
+      - var cols = 12;
+      - for (var i = 1; i < cols; i++)
+        - var bg = i % 2 == 0 ? 'black' : 'gray';
+        .row
+          - for (var j = i; j > 0; j--)
+            .col.block--padding(class='col--' + i + ' block--bg-' + bg) 1/#{i}
+      - for (var i = cols; i > 0; i--)
+        - var bg = i % 2 == 0 ? 'black' : 'gray';
+        .row
+          - for (var j = i; j > 0; j--)
+            .col.block--padding(class='col--' + i + ' block--bg-' + bg) 1/#{i}
+
+    h2.block--vpadding-double.block--margin-bottom Block
+
+    .block.block--margin-bottom.text--color-white
+      .block.block--padding.block--bg-black
+        p .block.block--padding.block--bg-black
+      .block.block--padding.block--bg-red
+        p .block.block--padding.block--bg-red
+      .block.block--padding.block--bg-yellow.text--color-black
+        p .block.block--padding.block--bg-yellow.text--color-black
+      .block.block--padding.text--color-black
+        p .block.block--padding.text--color-black
+      .block.block--margin.text--color-black
+        p .block.block--margin.text--color-black
+
+    h2.block--vpadding-double.block--margin-bottom Text
+
+    .block.block--margin-bottom
+
+      h1.block--margin-bottom h1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      h2.block--margin-bottom h2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      h3.block--margin-bottom h3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      h4.block--margin-bottom h4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      h5.block--margin-bottom h5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      h6.block--margin-bottom h6 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quam velit, sollicitudin vitae mi sit amet, eleifend volutpat sapien. Fusce commodo ex at arcu tincidunt, pretium blandit tortor hendrerit. Proin at ipsum eget mi tempor dignissim. Nullam fringilla ex elit, nec dictum ex elementum et. Suspendisse vel felis ipsum. Vestibulum metus augue, cursus ac posuere dapibus, vehicula eu felis. Integer condimentum at velit vitae vulputate. Ut sit amet molestie purus, at euismod arcu. Quisque a fermentum felis, luctus placerat justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent aliquet efficitur neque, ac bibendum risus porttitor non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+    h2.block--vpadding-double.block--margin-bottom Icon
+
+    .block.block--margin-bottom
+      +icon('possible-logo', 'Possible logo')
+
+    h2.block--vpadding-double.block--margin-bottom Button
+
+    .block.block--margin-bottom
+      a.button(href="#") Button

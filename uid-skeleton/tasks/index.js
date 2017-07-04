@@ -1,0 +1,14 @@
+require('./browser-sync');
+require('./ci');
+require('./critical');
+require('./deploy');
+require('./fonts');
+require('./imagemin');
+require('./inject');
+require('./nodemon');
+require('./postcss');
+require('./pug');
+require('./start');
+require('./svg');
+require('./watch');
+require('./webpack');

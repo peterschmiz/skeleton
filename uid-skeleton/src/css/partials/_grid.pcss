@@ -1,0 +1,56 @@
+/* http://lostgrid.org/lostgrid-example.html */
+
+@import '../base/_media.pcss';
+@import '../base/_sizes.pcss';
+@import '../base/_color.pcss';
+
+@lost gutter 20px;
+@lost flexbox flex;
+
+:root {
+  --cols: 12;
+}
+
+.grid {
+  lost-flex-container: column;
+
+  &--vcentred {
+    lost-align: center;
+  }
+
+  &--edit {
+    lost-utility: edit;
+  }
+
+  .row {
+    margin-bottom: var(--baseSize);
+    lost-flex-container: row;
+
+    &--centred {
+      lost-align: center;
+    }
+
+  }
+
+}
+
+.col {
+  lost-column: 1/1;
+
+  &--valign {
+    lost-align: center;
+  }
+
+  &--none {
+    lost-column: none;
+  }
+
+  /* stylelint-disable */
+  @for $col from 1 to var(--cols) {
+    &--$col {
+      lost-column: 1/$(col);
+    }
+  }
+  /* stylelint-enable */
+
+}

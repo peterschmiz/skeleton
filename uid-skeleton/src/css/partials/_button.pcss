@@ -1,0 +1,36 @@
+@import '../base/_media.pcss';
+
+.button {
+  position: relative;
+  display: inline-block;
+  min-height: 40px;
+  padding: 10px 20px;
+  font-family: UniversNextRegular, Arial, sans-serif;
+  font-size: 16px;
+  color: var(--white);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--black);
+  box-sizing: border-box;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: var(--black);
+    border: 1px solid var(--black);
+    background: var(--white);
+  }
+
+  &:focus {
+    outline: 0;
+
+    &::before {
+      content: '';
+      pointer-events: none;
+      border: 1px dotted var(--black);
+      @util position(absolute, -8px);
+    }
+
+  }
+
+}

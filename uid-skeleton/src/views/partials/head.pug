@@ -1,0 +1,45 @@
+head
+  title=config.head.title
+  meta(charset=config.head.charset)
+  //- https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag
+  meta(name='viewport', content=config.head.viewport)
+
+  meta(name='keywords', content=config.head.keywords)
+  meta(name='description', content=config.head.description)
+
+  //- https://github.com/audreyr/favicon-cheat-sheet
+  //- http://iconogen.com/
+  link(rel='shortcut icon', href=config.head.favicon_ico)
+  link(rel='icon', type='image/png', href=config.head.favicon_png_16x16)
+  link(rel='icon', type='image/png', href=config.head.favicon_png_32x32)
+  link(rel='icon', type='image/png', href=config.head.favicon_png_96x96)
+  link(rel='icon', type='image/png', href=config.head.favicon_android sizes='192x192')
+
+  //- Facebook meta tags
+  if(config.head.opengraph.enabled)
+    each value, key in config.head.opengraph.tags
+      meta(content=value, property=key)
+
+  //- Twitter meta tags
+  if(config.head.twitter.enabled)
+    each value, key in config.head.twitter.tags
+      meta(content=value, property=key)
+
+  //- iOS touch icons
+  if(config.head.ios.enabled)
+    link(rel='apple-touch-icon', href=config.head.ios.default)
+    each value, key in config.head.ios.icons
+      link(rel='apple-touch-icon', sizes=key, href=value)
+
+  style
+    // inject:css
+    // endinject
+
+  link(as='style', rel='preload' type='text/css', href=config.assets.mainStyle, onload='this.rel=\'stylesheet\'')
+  noscript
+    link(rel='stylesheet' href=config.assets.mainStyle)
+  script.
+    /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+    !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+    /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+    !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
